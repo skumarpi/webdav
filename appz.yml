@@ -29,4 +29,4 @@ properties:
     DAV_USER: appz
     DAV_USERPASSWORD:
       vault: DAV_USERPASSWORD
-    revision : 67
+    revision : 68
