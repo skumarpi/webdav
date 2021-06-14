@@ -1,0 +1,32 @@
+app:
+    name: WebDav
+    code: WEBDAV
+    notify: skumar@ecloudcontrol.com
+    
+build:
+    version: 2.0
+    env: DEV
+    build_file: none
+    output_files: output/*.zip
+    image_template: webdav-2.0
+    
+deploy:
+    context: skumarpi/DEV
+    type: statefulset
+    replicas: 1
+    port:
+    - 5432
+    
+volumes:
+  - claim: webdav-data
+    mount: /appz/data
+    name: data
+    size: 5Gi
+    mode: ReadWriteOnce   
+    
+properties:
+    DAV_FOLDER: DBBACKUP
+    DAV_USER: appz
+    DAV_USERPASSWORD:
+      vault: DAV_USERPASSWORD
+    revision : 66
